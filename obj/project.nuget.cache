@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "k9usyzJO4yNXO+V6LcIHf2d3t7FsILeesNAvrjcHUUp0djHBmpcbxHv0HtuTPx6Mt3CCb8c3rWz4KbUMJDXujA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\PC\\Documents\\Josue_Estudios\\Josue_dev\\DSOpenCv\\DSOpenCv.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\opencvsharp4\\4.8.0.20230708\\opencvsharp4.4.8.0.20230708.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\opencvsharp4.runtime.win\\4.8.0.20230708\\opencvsharp4.runtime.win.4.8.0.20230708.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
