@@ -102,7 +102,6 @@ namespace TestDigitalSolution324
                 // (Este paso requiere más código y no se puede proporcionar aquí).
             }   
         }
-
         public static void Main(string[]args){
             CaptureFrames();
             AnalyzeFace();
