@@ -1,2 +1,2 @@
-# UsingOpenCvOn.Net
-a project that use OpenCv on .Net
+# usingOpenCv
+a project that use OpenCv on C#
