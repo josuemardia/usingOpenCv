@@ -47,44 +47,93 @@ namespace TestDigitalSolution324
         }
 
         public static void AnalyzeFace(){
-        
+            // Ruta del archivo de video
             string videoPath = "video/analyzePeople.mp4";
-            using (VideoCapture videoCapture = new VideoCapture(videoPath))
+
+            // Crea un objeto VideoCapture para leer el video
+            using (var video = new VideoCapture(videoPath))
             {
-                if (!videoCapture.IsOpened())
+                // Verifica si el video se abrió correctamente
+                if (!video.IsOpened())
                 {
-                    Console.WriteLine("Error al abrir el video.");
+                    Console.WriteLine("No se pudo abrir el archivo de video.");
                     return;
                 }
 
-                // Crear ventana para mostrar el video
-                using (Window window = new Window("Video"))
+                // Crea una carpeta para guardar las imágenes
+                string outputFolder = "video/analyzedFaces";
+                Directory.CreateDirectory(outputFolder);
+
+                // Crea un objeto CascadeClassifier para detectar caras
+                CascadeClassifier faceDetector = new CascadeClassifier("data/haarcascade_frontalface_default.xml");
+
+                // Lee el video y analiza cada frame
+                Mat frame = new Mat();
+                int frameCount = 0;
+                while (true)
                 {
-                    Mat frame = new Mat();
-
-                    while (true)
+                    // Lee el siguiente frame
+                    if (!video.Read(frame))
                     {
-                        // Leer el siguiente frame del video
-                        videoCapture.Read(frame);
-
-                        if (frame.Empty())
-                        {
-                            Console.WriteLine("Fin del video.");
-                            break;
-                        }
-
-                        // Realizar el análisis facial en el frame
-                        DetectAndDrawFacialDifferences(frame);
-
-                        // Mostrar el frame en la ventana
-                        window.ShowImage(frame);
-
-                        // Salir del bucle si se presiona la tecla 'Esc'
-                        if (Cv2.WaitKey(30) == 27)
-                            break;
+                        break;
                     }
+
+                    // Detecta las caras en el frame
+                    Rect[] faces = faceDetector.DetectMultiScale(frame);
+
+                    // Dibuja un rectángulo alrededor de cada cara detectada
+                    foreach (Rect face in faces)
+                    {
+                        Cv2.Rectangle(frame, face, Scalar.Red, 2);
+                    }
+
+                    // Guarda el frame con los rectángulos dibujados
+                    string imagePath = Path.Combine(outputFolder, $"frame{frameCount:D5}.jpg");
+                    Cv2.ImWrite(imagePath, frame);
+
+                    // Incrementa el contador de frames
+                    frameCount++;
                 }
-            }
+
+                Console.WriteLine($"Se analizaron {frameCount} frames en el video.");
+            /*----------*/
+            // string videoPath = "video/analyzePeople.mp4";
+            // using (VideoCapture videoCapture = new VideoCapture(videoPath))
+            // {
+            //     if (!videoCapture.IsOpened())
+            //     {
+            //         Console.WriteLine("Error al abrir el video.");
+            //         return;
+            //     }
+
+            //     // Crear ventana para mostrar el video
+            //     using (Window window = new Window("Video"))
+            //     {
+            //         Mat frame = new Mat();
+
+            //         while (true)
+            //         {
+            //             // Leer el siguiente frame del video
+            //             videoCapture.Read(frame);
+
+            //             if (frame.Empty())
+            //             {
+            //                 Console.WriteLine("Fin del video.");
+            //                 break;
+            //             }
+
+            //             // Realizar el análisis facial en el frame
+            //             DetectAndDrawFacialDifferences(frame);
+
+            //             // Mostrar el frame en la ventana
+            //             window.ShowImage(frame);
+
+            //             // Salir del bucle si se presiona la tecla 'Esc'
+            //             if (Cv2.WaitKey(30) == 27)
+            //                 break;
+            //         }
+            //     }
+            }  // }
         
         } 
         public static void DetectAndDrawFacialDifferences(Mat frame)
