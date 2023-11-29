@@ -95,62 +95,9 @@ namespace TestDigitalSolution324
                     frameCount++;
                 }
 
-                Console.WriteLine($"Se analizaron {frameCount} frames en el video.");
-            /*----------*/
-            // string videoPath = "video/analyzePeople.mp4";
-            // using (VideoCapture videoCapture = new VideoCapture(videoPath))
-            // {
-            //     if (!videoCapture.IsOpened())
-            //     {
-            //         Console.WriteLine("Error al abrir el video.");
-            //         return;
-            //     }
-
-            //     // Crear ventana para mostrar el video
-            //     using (Window window = new Window("Video"))
-            //     {
-            //         Mat frame = new Mat();
-
-            //         while (true)
-            //         {
-            //             // Leer el siguiente frame del video
-            //             videoCapture.Read(frame);
-
-            //             if (frame.Empty())
-            //             {
-            //                 Console.WriteLine("Fin del video.");
-            //                 break;
-            //             }
-
-            //             // Realizar el análisis facial en el frame
-            //             DetectAndDrawFacialDifferences(frame);
-
-            //             // Mostrar el frame en la ventana
-            //             window.ShowImage(frame);
-
-            //             // Salir del bucle si se presiona la tecla 'Esc'
-            //             if (Cv2.WaitKey(30) == 27)
-            //                 break;
-            //         }
-            //     }
-            }  // }
-        
-        } 
-        public static void DetectAndDrawFacialDifferences(Mat frame)
-        {
-            // TODO: Agregar aquí la lógica para detectar y dibujar las diferencias faciales.
-            // Puedes utilizar la clase CascadeClassifier para la detección facial.
-            // Consulta la documentación de OpenCVSharp para más detalles.
-            // https://github.com/shimat/opencvsharp
-
-            // Ejemplo:
-            using (CascadeClassifier faceCascade = new CascadeClassifier("data/haarcascade_frontalface_default.xml"))
-            {
-                // TODO: Implementar la detección facial en el frame
-            }
-
-            // TODO: Implementar la lógica para generar imágenes con las diferencias faciales.
-        }  
+                Console.WriteLine($"Se analizaron {frameCount} frames en el video.");    
+            } 
+        }
     
         public static void Main(string[]args){
             CaptureFrames();
