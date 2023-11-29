@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "OpenCV.Net/3.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/OpenCV.Net.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/OpenCV.Net.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "OpenCvSharp4/4.8.0.20230708": {
         "type": "package",
         "dependencies": {
@@ -71,6 +84,25 @@
     }
   },
   "libraries": {
+    "OpenCV.Net/3.4.2": {
+      "sha512": "RPbhCesKljnciMKcWnzWHCRnR4Y/EoG723oWsiau/yrPYOOWmtSBaGDV0/6ZA7Wl2tj3U+JfvB8Jb9fzh7+lyg==",
+      "type": "package",
+      "path": "opencv.net/3.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "content/OpenCV.Net.dll.config",
+        "icon.png",
+        "lib/net462/OpenCV.Net.dll",
+        "lib/net462/OpenCV.Net.xml",
+        "lib/netstandard2.0/OpenCV.Net.dll",
+        "lib/netstandard2.0/OpenCV.Net.xml",
+        "opencv.net.3.4.2.nupkg.sha512",
+        "opencv.net.nuspec",
+        "runtime.json"
+      ]
+    },
     "OpenCvSharp4/4.8.0.20230708": {
       "sha512": "MmZqvNUJuTUWQfkyXN1NOxJjx6JNfaedMOnY0dAdP5zgaKMAsxwwX5pkZl/F40JheSo3oMJhI7nhDC3kh7/ISQ==",
       "type": "package",
@@ -160,6 +192,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "OpenCV.Net >= 3.4.2",
       "OpenCVSharp4.runtime.win >= 4.8.0.20230708",
       "OpenCvSharp4 >= 4.8.0.20230708"
     ]
@@ -201,6 +234,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "OpenCV.Net": {
+            "target": "Package",
+            "version": "[3.4.2, )"
+          },
           "OpenCVSharp4.runtime.win": {
             "target": "Package",
             "version": "[4.8.0.20230708, )"

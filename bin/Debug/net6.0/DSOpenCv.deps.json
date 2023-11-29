@@ -8,11 +8,20 @@
     ".NETCoreApp,Version=v6.0": {
       "DSOpenCv/1.0.0": {
         "dependencies": {
+          "OpenCV.Net": "3.4.2",
           "OpenCvSharp4.runtime.win": "4.8.0.20230708",
           "OpenCvSharp4": "4.8.0.20230708"
         },
         "runtime": {
           "DSOpenCv.dll": {}
+        }
+      },
+      "OpenCV.Net/3.4.2": {
+        "runtime": {
+          "lib/netstandard2.0/OpenCV.Net.dll": {
+            "assemblyVersion": "3.4.2.0",
+            "fileVersion": "3.4.2.0"
+          }
         }
       },
       "OpenCvSharp4/4.8.0.20230708": {
@@ -60,6 +69,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "OpenCV.Net/3.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RPbhCesKljnciMKcWnzWHCRnR4Y/EoG723oWsiau/yrPYOOWmtSBaGDV0/6ZA7Wl2tj3U+JfvB8Jb9fzh7+lyg==",
+      "path": "opencv.net/3.4.2",
+      "hashPath": "opencv.net.3.4.2.nupkg.sha512"
     },
     "OpenCvSharp4/4.8.0.20230708": {
       "type": "package",

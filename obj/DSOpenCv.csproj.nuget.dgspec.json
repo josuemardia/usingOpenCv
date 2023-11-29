@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "OpenCV.Net": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            },
             "OpenCVSharp4.runtime.win": {
               "target": "Package",
               "version": "[4.8.0.20230708, )"

@@ -47,64 +47,67 @@ namespace TestDigitalSolution324
         }
 
         public static void AnalyzeFace(){
-            // Ruta del archivo de video
+        
             string videoPath = "video/analyzePeople.mp4";
-
-            // Crea un objeto VideoCapture para leer el video
-            using (var video = new VideoCapture(videoPath))
+            using (VideoCapture videoCapture = new VideoCapture(videoPath))
             {
-                // Verifica si el video se abrió correctamente
-                if (!video.IsOpened())
+                if (!videoCapture.IsOpened())
                 {
-                    Console.WriteLine("No se pudo abrir el archivo de video.");
+                    Console.WriteLine("Error al abrir el video.");
                     return;
                 }
 
-                // Crea una carpeta para guardar las imágenes
-                string outputFolder = "video/AnalyzePeopleFaces";
-                Directory.CreateDirectory(outputFolder);
-
-                // Crea un objeto CascadeClassifier para detectar caras
-                CascadeClassifier faceDetector = new CascadeClassifier("haarcascade_frontalface_default.xml");
-
-                // Lee el video y analiza cada frame
-                Mat frame = new Mat();
-                int frameCount = 0;
-                while (true)
+                // Crear ventana para mostrar el video
+                using (Window window = new Window("Video"))
                 {
-                    // Lee el siguiente frame
-                    if (!video.Read(frame))
+                    Mat frame = new Mat();
+
+                    while (true)
                     {
-                        break;
+                        // Leer el siguiente frame del video
+                        videoCapture.Read(frame);
+
+                        if (frame.Empty())
+                        {
+                            Console.WriteLine("Fin del video.");
+                            break;
+                        }
+
+                        // Realizar el análisis facial en el frame
+                        DetectAndDrawFacialDifferences(frame);
+
+                        // Mostrar el frame en la ventana
+                        window.ShowImage(frame);
+
+                        // Salir del bucle si se presiona la tecla 'Esc'
+                        if (Cv2.WaitKey(30) == 27)
+                            break;
                     }
-
-                    // Detecta las caras en el frame
-                    Rect[] faces = faceDetector.DetectMultiScale(frame);
-
-                    // Dibuja un rectángulo alrededor de cada cara detectada
-                    foreach (Rect face in faces)
-                    {
-                        Cv2.Rectangle(frame, face, Scalar.Red, 2);
-                    }
-
-                    // Guarda el frame con los rectángulos dibujados
-                    string imagePath = Path.Combine(outputFolder, $"frame{frameCount:D5}.jpg");
-                    Cv2.ImWrite(imagePath, frame);
-
-                    // Incrementa el contador de frames
-                    frameCount++;
                 }
+            }
+        
+        } 
+        public static void DetectAndDrawFacialDifferences(Mat frame)
+        {
+            // TODO: Agregar aquí la lógica para detectar y dibujar las diferencias faciales.
+            // Puedes utilizar la clase CascadeClassifier para la detección facial.
+            // Consulta la documentación de OpenCVSharp para más detalles.
+            // https://github.com/shimat/opencvsharp
 
-                Console.WriteLine($"Se analizaron {frameCount} frames en el video.");
+            // Ejemplo:
+            using (CascadeClassifier faceCascade = new CascadeClassifier("data/haarcascade_frontalface_default.xml"))
+            {
+                // TODO: Implementar la detección facial en el frame
+            }
 
-                // Analiza las diferencias faciales en cada imagen
-                // y genera una imagen con las diferencias faciales de cada persona
-                // (Este paso requiere más código y no se puede proporcionar aquí).
-            }   
-        }
+            // TODO: Implementar la lógica para generar imágenes con las diferencias faciales.
+        }  
+    
         public static void Main(string[]args){
             CaptureFrames();
             AnalyzeFace();
         }
     }
+        
 }
+
