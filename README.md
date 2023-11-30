@@ -1,2 +1,3 @@
-# usingOpenCv
-a project that use OpenCv on C#
+# Usando OpenCv 🔍
+
+### 👋 Para poder ver el script, buscar el archivo "program.cs" 👈
