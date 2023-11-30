@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Emgu.CV": {
+              "target": "Package",
+              "version": "[4.8.1.5350, )"
+            },
             "OpenCV.Net": {
               "target": "Package",
               "version": "[3.4.2, )"
