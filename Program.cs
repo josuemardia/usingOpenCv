@@ -14,7 +14,7 @@ namespace TestDigitalSolution324
 {
     class Program
     {
-        public static void  CaptureFrames(){
+        public static void  CaptureFrames(){ //Para capturar los frames de un video y guardarlo en una carpeta
             string videoPath = "./video/videoTest.mp4";// Ruta del archivo de video
 
             using (var video = new VideoCapture(videoPath)) // Lectura del video
@@ -98,7 +98,7 @@ namespace TestDigitalSolution324
             } 
         }
     
-        public static void FacialDifferences(){
+        public static void FacialDifferences(){ //para analizar por persona sus diferencias faciales (enojado, alegre, triste, serio, soñoliento, etc)
             
             VideoCapture capture = new VideoCapture("video/analyzePeople.mp4");
 
